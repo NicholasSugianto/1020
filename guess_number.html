@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess Game</title>
+  <script>
+    function playGuessGame() {
+      let secretNumber = Math.floor(Math.random() * 100) + 1;
+      let guess;
+      let tries = 0;
+
+      while (true) {
+        guess = prompt("Guess a number between 1 and 100:");
+        if (guess === null) { 
+          alert("Game ended.");
+          break; 
+        }
+
+        guess = parseInt(guess);
+        tries++;
+
+        if (guess === secretNumber) {
+          alert("You got it in " + tries + " tries!");
+          document.getElementById("result").innerText = 
+            "Correct! The number was " + secretNumber + ". Tries: " + tries;
+          break;
+        } else if (guess < secretNumber) {
+          alert("Try a bigger number!");
+        } else if (guess > secretNumber) {
+          alert("Try a smaller number!");
+        } else {
+          alert("Please enter a number!");
+        }
+      }
+    }
+  </script>
+</head>
+<body onload="playGuessGame()">
+  <h2>Guess the Number Game</h2>
+  <pre id="result"></pre>
+</body>
+</html>

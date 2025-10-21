@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temp Converter</title>
+  <script>
+    // Main function to run the converter
+    function runConverter() {
+      // Ask user for temperature
+      let tempInput = prompt("Please enter temperature:");
+      let unitInput = prompt("Is this in Celsius (C) or Fahrenheit (F)?").toUpperCase();
+      
+      // Convert input to number
+      let temp = parseFloat(tempInput);
+      let resultMsg = "";
+
+      if (unitInput === "C") {
+        let f = temp * 9 / 5 + 32;
+        resultMsg = temp + "°C equals " + f.toFixed(1) + "°F";
+      } else if (unitInput === "F") {
+        let c = (temp - 32) * 5 / 9;
+        resultMsg = temp + "°F equals " + c.toFixed(1) + "°C";
+      } else {
+        resultMsg = "Oops! Please enter C or F.";
+      }
+
+      alert(resultMsg); // Show popup
+      document.getElementById("output").innerText = resultMsg; // Show on page
+    }
+  </script>
+</head>
+<body onload="runConverter()">
+  <h2>Temperature Converter</h2>
+  <pre id="output"></pre>
+</body>
+</html>
+
